@@ -3,8 +3,8 @@
 <ul>
   <% @users.each do |user| %>
     <li id="<%= user.username %>">
-      <strong>username: </strong><%= user.username %> | 
-      <strong>points: </strong><%= user.points %> | 
+      username: <strong><%= user.username %></strong> | 
+      points: <strong><%= user.points %> </strong> | 
       <%= link_to "manage points", edit_admin_user_path(user) %>
     </li>
   <% end %>

@@ -9,7 +9,8 @@ class Admin::UsersController < Admin::BaseController
 
   def update
     @user = User.find(params[:id])
-    @user.update(user_params)
+    total_points = params[:user][:points].to_i + @user.points
+    @user.update(points: total_points)
     redirect_to admin_users_path
   end
 
