@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-feature "admin sees users index" do
-  scenario "when logged in as admin" do
+feature "admin assigns points to user" do
+  scenario "with valid input" do
     admin = User.create(username: "admin",
                         password: "asdf",
                         role: 1)
@@ -12,10 +12,13 @@ feature "admin sees users index" do
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
 
     visit admin_users_path
+    within("li#user_0") do
+      click_link "manage points" 
+    end
+    fill_in "Points", with: "50"
+    click_button "Award Points"
 
-    expect(page).to have_content("All Users")
-    expect(page).to have_content("user_0")
-    expect(page).to have_content("user_1")
-    expect(page).to have_content("user_2")
+    expect(page).to have_content("50")
   end
 end
+
