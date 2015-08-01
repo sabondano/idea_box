@@ -1,12 +1,12 @@
 <h1>Award or Takeaway Points</h1>
 
-<h3>username: <%= @user.username %></h3>
-<h3>points: <%= @user.points %></h3>
+<p>username: <%= @user.username %> <br>
+points: <%= @user.points %></p>
 
-<p>Enter the points you would like to award or takeaway:</p>
+<p>Enter the points you would like to award or takeaway: <br><small>(to takeaway points enter them as a negative number)</small></p>
 
 <%= form_for(@user, url: admin_user_path(@user), method: :patch) do |f| %>
   <%= f.label :points %>
   <%= f.text_field :points %>
-  <%= f.submit "Award Points" %>
+  <%= f.submit "Award/Take Points" %>
 <% end %>
