@@ -12,7 +12,7 @@ feature 'user can see awarded points' do
     expect(page).to have_content("Total Points: 50")
   end
 
-  scenario "before logging in" do
+  scenario "before logging in they can't" do
     user = User.create(username: "sebastian",
                        password: "asdf",
                        points: 50)

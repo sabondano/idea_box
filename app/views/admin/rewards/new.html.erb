@@ -1,0 +1,12 @@
+<h1>Add a Reward</h1>
+
+<%= form_for(@reward, url: admin_rewards_path(@rewards)) do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+
+  <%= f.label :cost %>
+  <%= f.text_field :cost %>
+
+  <%= f.submit "Create Reward" %>
+<% end %>
+

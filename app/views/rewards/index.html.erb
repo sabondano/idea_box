@@ -1,1 +1,12 @@
 <h1>All Rewards</h1>
+
+<%= link_to "Add Reward", new_admin_reward_path %>
+
+<ul>
+<% @rewards.each do |reward| %>
+  <li>
+    Reward: <%= reward.name %> <br>
+    Cost: <%= reward.cost %>
+  </li>
+<% end %>
+</ul>
