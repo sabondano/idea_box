@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 feature "admin manages rewards" do
-  scenario "creates rewards with valid input" do
+  scenario "create reward with valid input" do
     admin = User.create(username: "admin",
                         password: "asdf",
                         role: 1)
@@ -17,7 +17,7 @@ feature "admin manages rewards" do
     expect(page).to have_content("iPod")
   end
 
-  scenario "regular users cant add rewards" do
+  scenario "regular user cant manage rewards" do
     user = User.create(username: "sebastian",
                        password: "asdf")
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
@@ -27,7 +27,7 @@ feature "admin manages rewards" do
     expect(page).to_not have_link("Add Reward")
   end
 
-  scenario "admin edits rewards with valid input" do
+  scenario "admin edits reward with valid input" do
     admin = User.create(username: "admin",
                         password: "asdf",
                         role: 1)
@@ -44,5 +44,21 @@ feature "admin manages rewards" do
 
     expect(page).to have_content("iPod Nano")
     expect(page).to have_content("150")
+  end
+
+  scenario "admin deletes reward" do
+    admin = User.create(username: "admin",
+                        password: "asdf",
+                        role: 1)
+    Reward.create(name: "iPod",
+                   cost: "200")
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
+
+    visit rewards_path
+    click_link "Manage Rewards"
+    click_link "delete"
+
+    expect(page).to_not have_content("iPod")
+    expect(page).to_not have_content("200")
   end
 end

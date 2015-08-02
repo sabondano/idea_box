@@ -7,7 +7,8 @@
     <li>
       Reward: <%= reward.name %> <br>
       Cost: <%= reward.cost %> <br>
-      <%= link_to "edit", edit_admin_reward_path(reward) %>
+      <%= link_to "edit", edit_admin_reward_path(reward) %> | 
+      <%= link_to "delete", admin_reward_path(reward), method: :delete, data: { confirm: "Are you sure?" } %>
   </li>
 <% end %>
 </ul>

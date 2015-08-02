@@ -21,6 +21,11 @@ class Admin::RewardsController < Admin::BaseController
     redirect_to admin_rewards_path
   end
 
+  def destroy
+    Reward.find(params[:id]).destroy
+    redirect_to admin_rewards_path
+  end
+
   private
 
   def reward_params
