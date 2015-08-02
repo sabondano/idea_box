@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :check_authorization, only: [:show]
 
   def show
     @user = User.find(params[:id])
@@ -22,5 +23,9 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:username, :password)
+  end
+
+  def check_authorization
+    render file: "/public/404" if current_user.nil? || current_user.id != params[:id].to_i
   end
 end

@@ -18,6 +18,5 @@ feature "admin takes points from user" do
     click_button "Award/Take Points"
 
     expect(page).to have_content("40")
- 
   end
 end

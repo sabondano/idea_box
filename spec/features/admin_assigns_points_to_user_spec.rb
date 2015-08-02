@@ -14,7 +14,7 @@ feature "admin assigns points to user" do
       click_link "manage points" 
     end
     fill_in "Points", with: "50"
-    click_button "Award Points"
+    click_button "Award/Take Points"
 
     expect(page).to have_content("50")
   end
@@ -33,7 +33,7 @@ feature "admin assigns points to user" do
       click_link "manage points" 
     end
     fill_in "Points", with: "10"
-    click_button "Award Points"
+    click_button "Award/Take Points"
 
     expect(page).to have_content("20")
   end
