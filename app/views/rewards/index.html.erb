@@ -1,7 +1,7 @@
 <h1>All Rewards</h1>
 
 <% if current_user %>
-  <%= link_to "Add Reward", new_admin_reward_path unless current_user.admin? == false %>
+  <%= link_to "Manage Rewards", admin_rewards_path unless current_user.admin? == false %>
 <% end %>
 
 <ul>

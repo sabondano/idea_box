@@ -1,11 +1,24 @@
 class Admin::RewardsController < Admin::BaseController
+  def index
+    @rewards = Reward.all
+  end
+
   def new
     @reward = Reward.new
   end
 
   def create
-    @reward = Reward.create(reward_params)
-    redirect_to rewards_path
+    Reward.create(reward_params)
+    redirect_to admin_rewards_path
+  end
+
+  def edit
+    @reward = Reward.find(params[:id])
+  end
+
+  def update
+    Reward.find(params[:id]).update(reward_params)
+    redirect_to admin_rewards_path
   end
 
   private

@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :users, only: [:index, :edit, :update]
-    resources :rewards, only: [:new, :create, :edit, :update, :destroy]
+    resources :rewards, only: [:index, :new, :create, :edit, :update, :destroy]
   end
 
   get "/login", to: "sessions#new"
