@@ -10,10 +10,17 @@
     <% if current_user %>
       Welcome, <%= current_user.username %> | 
       <%= link_to "logout", logout_path, method: :delete %>
+      <ul>
+        <li><%= link_to "Rewards Index", rewards_path %></li>
+        <li><%= link_to "Dashboard", user_path(current_user) %></li>
+      </ul>
     <% else %>
       <%= link_to "Create Account", new_user_path %> | <%= link_to "login", login_path %>
     <% end %>
-  <%= yield %>
+    <% flash.each do |type, msg| %>
+      <%= content_tag :div, msg, class: "flash_#{type}" %>
+    <% end %>
+    <%= yield %>
 
-</body>
+  </body>
 </html>

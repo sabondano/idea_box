@@ -8,7 +8,10 @@
   <% @rewards.each do |reward| %>
     <li>
       Reward: <%= reward.name %> <br>
-      Cost: <%= reward.cost %>
-  </li>
-<% end %>
+      Cost: <%= reward.cost %> <br>
+      <% if current_user %>
+        <%= link_to "redeem", user_rewards_path(current_user, reward_id: reward.id), method: :post %>
+      <% end %>
+    </li>
+  <% end %>
 </ul>

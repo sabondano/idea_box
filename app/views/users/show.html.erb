@@ -1,1 +1,11 @@
-<h3>Total Points: <%= @user.points %></h3>
+<h4>Total Points: <%= @user.points %></h4>
+<h4>Available Points: <%= @user.available_points %></h4>
+
+<h4>Your Rewards:</h4>
+<ul>
+  <% @user.rewards.each do |reward| %>
+    <li>
+      <%= reward.name %>
+    </li>
+  <% end %>
+</ul>
